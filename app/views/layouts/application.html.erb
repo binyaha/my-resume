@@ -10,7 +10,7 @@
 
   <body>
     <div class="container">
-      <%= render partial: "layouts/nav" %>
+      <%= render partial: "layouts/nav", locals: {obj: current_user} %>
       <%= yield %>
     </div>
   </body>

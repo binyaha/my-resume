@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(version: 20180220161936) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "role"
+    t.string "avatar"
+    t.text "intro"
+    t.string "name", default: "NormalUser"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
