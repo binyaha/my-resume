@@ -10,8 +10,13 @@ Rails.application.routes.draw do
     resources :items
   end
   resources :users, only: [:edit, :update]
+  resources :works, except: [:index]
+
+
   resources :users ,only: [:show] do
+    resources :works, only: [:index]
     resources :items, only: [:index]
+    resources :contacks
     member do
       get :works
       get :experiences

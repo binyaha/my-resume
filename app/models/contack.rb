@@ -1,0 +1,2 @@
+class Contack < ApplicationRecord
+end
