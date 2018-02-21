@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+
+      <%= form_for @item do |f| %>      
+
+          <form class="form-horizontal">
+              
+            <div class="form-group">
+              <%= f.text_area :description, rows: 3, class: "form-control holder",placeholder: "description..." %>
+            </div>
+            <div class="form-group">
+              <%= f.submit class: "btn btn-primary"%>
+            </div>
+          </form>
+
+      <% end %>
+    </div>
+  </div>

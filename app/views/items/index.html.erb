@@ -1,7 +1,28 @@
-<h1>前台</h1>
-<div class = "container">
   <div class = "row">
     <%= render partial: "shared/user_profile", locals: {obj: @user} %>
-  </div>
 
-</div>
+    <div class="col-xs-8 user-block">
+      <h2>Work experiences and Education</h2>
+      <% @items.each do |item| %>
+        <div class = "row">
+          <div class = "col-xs-8">
+            <span><%= item.description %></span>
+          </div>
+          <div class = "col-xs-4">
+            <%= link_to "編輯", edit_item_path(item) %>
+            <%= link_to "刪除", item_path(item) , method: :delete, data: {confirm: "Are you sure??"}%>
+          </div>
+        </div>
+      <% end %>
+  
+      <%= form_for @item do |f| %>
+    
+        <%= f.text_area :description, class: "form-control holder",rows: 1,placeholder: "Say something..." %>
+        <br>
+        <%= f.submit class: "btn btn-primary" %>
+        <br>
+        <br>
+      <% end %>
+    </div>
+  </div>
+</
