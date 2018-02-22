@@ -29,10 +29,12 @@
           </div>
         <% end %>
       </div>
-      <div class = "col-xs-6">
-        <%= link_to new_work_path(@work) do %>
-          <%= image_tag "plus.jpg", width: "35%" %>
-        <% end %>
+      <% if @user == current_user %>
+        <div class = "col-xs-6">
+          <%= link_to new_work_path(@work) do %>
+            <%= image_tag "plus.jpg", width: "35%" %>
+          <% end %>
+        </div>
       </div>
     </div>
 
