@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :role
       t.string :avatar
       t.text :intro
-      t.string :name, default: "NormalUser"
+      t.string :name
 
       t.timestamps null: false
     end

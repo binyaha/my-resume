@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180221174400) do
 
   create_table "items", force: :cascade do |t|
     t.text "description"
-    t.string "user_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20180221174400) do
     t.string "role"
     t.string "avatar"
     t.text "intro"
-    t.string "name", default: "NormalUser"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
