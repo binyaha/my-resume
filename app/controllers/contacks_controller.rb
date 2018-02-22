@@ -3,10 +3,6 @@ class ContacksController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @contacks = Contack.all
-  end
-
-  def new
-    @user = User.find(params[:user_id])
     @contack = Contack.new
   end
 

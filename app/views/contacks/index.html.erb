@@ -5,14 +5,36 @@
     
     <div class = "col-xs-8">
       <% @contacks.each do |contack| %>
-        <li>
-          <%= contack.sentence %>
-          <%= link_to "編輯", edit_user_contack_path(@user, contack) %>
-          <%= link_to "刪除", user_contack_path(@user, contack), method: :delete %>
-          </li>
+        <div class = "row">
+          <div class = "col-xs-7">
+            <%= contack.sentence %>
+          </div>
+          <div class = "col-xs-3">
+            <%= contack.created_at.strftime("%Y-%m-%d, %I:%M %p") %>
+          </div>
+          <div class = "col-xs-2">
+            <%= link_to "編輯", edit_user_contack_path(@user, contack) %>
+            <%= link_to "刪除", user_contack_path(@user, contack), method: :delete %>
+          </div>
+        </div>
       <% end %>
     </div>
   
-    <%= link_to "Say", new_user_contack_path(@user,@contack) %>
+    <div class="row">
+    
+      <%= form_for [@user,@contack] do |f| %>
+        <div class="col-xs-8 col-xs-offset-4">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <%= f.text_field :sentence, class: "form-control holder",placeholder: "Say something.." %>
+            </div>
+     
+            <div class="form-group">
+              <%= f.submit class: "btn btn-primary"%>
+            </div>
+          </form>
+        </div>
+      <% end %>
+    </div>
 
   </div>
