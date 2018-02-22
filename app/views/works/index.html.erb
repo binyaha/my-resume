@@ -21,8 +21,10 @@
                 <%= work.project_name %>
               </div>
               <div>
-                <%= link_to "edit", edit_work_path(work)  %>
-                <%= link_to "delete",work_path(work), method: :delete  %>
+                <% if @user == current_user %>
+                  <%= link_to "edit", edit_work_path(work)  %>
+                  <%= link_to "delete",work_path(work), method: :delete  %>
+                <% end %>
               </div>
             </div>
           </div>
