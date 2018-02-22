@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   def index
     @user = current_user
     @item = Item.new
-    @items = Item.order('created_at DESC')
+    @items = Item.order('created_at ASC')
   end
 
   def create
