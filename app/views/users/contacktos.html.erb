@@ -1,0 +1,14 @@
+
+
+<%= render partial: "shared/user_profile", locals: {obj: @user} %>
+
+<% @contacktos.each do |contackto_one| %>
+  <li>
+    <%= link_to contackto_one.sentence, user_contack_path(contackto_one.contackto,contackto_one) %>
+    
+    <%= link_to "刪除", user_contack_path(contackto_one.contackto,contackto_one), method: :delete %>
+
+  </li>
+
+
+<% end %>

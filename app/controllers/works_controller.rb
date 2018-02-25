@@ -2,7 +2,7 @@ class WorksController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @works = Work.all
+    @works = @user.works.order(created_at: "desc")
   end
 
   def show
@@ -10,35 +10,48 @@ class WorksController < ApplicationController
   end
 
   def new
-    @user = current_user
     @work = Work.new
   end
 
   def create
     @user = current_user
-    @work = Work.new(work_params)
+    @work = @user.works.build(work_params)
     @work.save
+    @work_table = WorkTable.create(user_id: @user.id, work_id: @work.id )
     redirect_to user_works_path(@user)
   end
 
   def destroy
     @user = current_user
     @work = Work.find(params[:id])
-    @work.destroy
-    redirect_to user_works_path(@user)
+    if @work.users.count == 1 && @work.work_tables.order(created_at: "asc").first.user == @user
+      @work.destroy
+      redirect_to user_works_path(@user)
+    else
+      flash[:alert] = "你不是第一作者"
+    end      
+
   end
 
   def edit
-    @user = current_user
     @work = Work.find(params[:id])
+    @user = @work.work_tables.order(created_at: "asc").first.user
+    if @user != current_user
+      flash[:alert] = "你不是第一作者"
+      redirect_to root_path
+    end
   end
 
   def update
-    @user = current_user
     @work = Work.find(params[:id])
-    @work.update(work_params)
-    @work.save
-    redirect_to user_works_path(@user)
+    @user = @work.work_tables.order(created_at: "asc").first.user
+    if @user != current_user
+      flash[:alert] = "你不是第一作者"
+      redirect_to root_path
+    else
+      @work.update(work_params)
+      redirect_to user_works_path(@user)
+    end
   end
 
   private

@@ -15,6 +15,12 @@ class UsersController < ApplicationController
     redirect_to user_items_path(@user)
   end
 
+  def contacktos
+    @user = User.find(params[:id])
+    
+    @contacktos = @user.contacks
+  end
+
   private
 
   def user_params

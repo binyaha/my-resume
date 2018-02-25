@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     member do
       get :works
       get :experiences
-      get :contacks
+
+      get :contacktos
     end
   end
 
