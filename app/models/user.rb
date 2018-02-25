@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
+  has_many :items, dependent: :destroy
   
 
   mount_uploader :avatar, PhotoUploader
